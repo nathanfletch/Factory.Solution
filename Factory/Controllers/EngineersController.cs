@@ -94,5 +94,17 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    public ActionResult DeleteMachine(int joinId)
+    {
+      var joinEntry = _db.MachineEngineer.FirstOrDefault(entry => entry.MachineEngineerId == joinId);
+      int engineerId = joinEntry.Engineer.EngineerId;
+      _db.MachineEngineer.Remove(joinEntry);
+      _db.SaveChanges();
+      var thisEngineer = _db.Engineers
+        .Include(engineer => engineer.JoinEntities)
+        .ThenInclude(join => join.Engineer)
+        .FirstOrDefault(engineer => engineer.EngineerId == engineerId);
+      return View("Details", thisEngineer);
+    }
   }
 }

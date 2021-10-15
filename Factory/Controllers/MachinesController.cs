@@ -100,15 +100,15 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult DeleteEngineer(int joinId)
     {
-        var joinEntry = _db.MachineEngineer.FirstOrDefault(entry => entry.MachineEngineerId == joinId);
-        int machineId = joinEntry.Machine.MachineId;
-        _db.MachineEngineer.Remove(joinEntry);
-        _db.SaveChanges();
-        var thisMachine = _db.Machines
-          .Include(machine => machine.JoinEntities)
-          .ThenInclude(join => join.Engineer)
-          .FirstOrDefault(machine => machine.MachineId == machineId);
-        return View("Details", thisMachine);
+      var joinEntry = _db.MachineEngineer.FirstOrDefault(entry => entry.MachineEngineerId == joinId);
+      int machineId = joinEntry.Machine.MachineId;
+      _db.MachineEngineer.Remove(joinEntry);
+      _db.SaveChanges();
+      var thisMachine = _db.Machines
+        .Include(machine => machine.JoinEntities)
+        .ThenInclude(join => join.Engineer)
+        .FirstOrDefault(machine => machine.MachineId == machineId);
+      return View("Details", thisMachine);
     }
   }
 }
