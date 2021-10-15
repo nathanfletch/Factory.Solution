@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Factory.Models;
 
 namespace Factory.Models
 {
