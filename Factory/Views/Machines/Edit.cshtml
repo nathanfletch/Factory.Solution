@@ -18,7 +18,7 @@
     @Html.Label("Add an engineer who can fix this machine")
     @Html.DropDownList("EngineerId")
 
-    <input type="submit" value="Apply changes" />
+    <input type="submit" value="Apply changes" class="btn btn-primary"/>
 }
 
-<p>@Html.ActionLink("See all machines", "Index")</p>
+<p>@Html.ActionLink("See all machines", "Index", null, null, new {@class="mt-3 btn btn-primary"})</p>

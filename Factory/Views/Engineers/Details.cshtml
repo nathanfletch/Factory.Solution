@@ -22,17 +22,17 @@ else
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId })</li>
+    <li>@Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId }, new {@class="mt-3 btn btn-primary"})</li>
     @using (Html.BeginForm("DeleteMachine", "Engineers"))
     {
       @Html.Hidden("joinId", @join.MachineEngineerId)
-      <input type="submit" value="Delete"/>
+      <input type="submit" value="Delete" class="mt-3 btn btn-danger"/>
     }
   }
   </ul>
 }
 
-<p>@Html.ActionLink("Add a machine", "AddMachine", new { id = Model.EngineerId })</p>
-<p>@Html.ActionLink("Edit this engineer", "Edit", new { id = Model.EngineerId })</p>
-<p>@Html.ActionLink("Delete this engineer", "Delete", new { id = Model.EngineerId })</p>
-<p>@Html.ActionLink("See all engineers", "Index")</p>
+<p>@Html.ActionLink("Add a machine", "AddMachine", new { id = Model.EngineerId },new {@class="mt-3 btn btn-primary"})</p>
+<p>@Html.ActionLink("Edit this engineer", "Edit", new { id = Model.EngineerId },new {@class="mt-3 btn btn-primary"})</p>
+<p>@Html.ActionLink("Delete this engineer", "Delete", new { id = Model.EngineerId },new {@class="mt-3 btn btn-danger"})</p>
+<p>@Html.ActionLink("See all engineers", "Index", null, null, new {@class="mt-3 btn btn-primary"})</p>
